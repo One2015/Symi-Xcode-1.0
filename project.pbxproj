@@ -1,0 +1,531 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		A1234567890123456789 /* SymiApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1234567890123456788 /* SymiApp.swift */; };
+		A1234567890123456791 /* DIContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1234567890123456790 /* DIContainer.swift */; };
+		A1234567890123456793 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1234567890123456792 /* MainView.swift */; };
+		A1234567890123456795 /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1234567890123456794 /* MainViewModel.swift */; };
+		A1234567890123456797 /* NewSymptomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1234567890123456796 /* NewSymptomView.swift */; };
+		A1234567890123456799 /* NewSymptomViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1234567890123456798 /* NewSymptomViewModel.swift */; };
+		A1234567890123456801 /* TranscriptionSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1234567890123456800 /* TranscriptionSheetView.swift */; };
+		A1234567890123456803 /* AttachmentPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1234567890123456802 /* AttachmentPicker.swift */; };
+		A1234567890123456805 /* HistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1234567890123456804 /* HistoryView.swift */; };
+		A1234567890123456807 /* HistoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1234567890123456806 /* HistoryViewModel.swift */; };
+		A1234567890123456809 /* DoctorReportView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1234567890123456808 /* DoctorReportView.swift */; };
+		A1234567890123456811 /* DoctorReportViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1234567890123456810 /* DoctorReportViewModel.swift */; };
+		A1234567890123456813 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1234567890123456812 /* SettingsView.swift */; };
+		A1234567890123456815 /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1234567890123456814 /* SettingsViewModel.swift */; };
+		A1234567890123456817 /* SymptomEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1234567890123456816 /* SymptomEntry.swift */; };
+		A1234567890123456819 /* Attachment.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1234567890123456818 /* Attachment.swift */; };
+		A1234567890123456821 /* Language.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1234567890123456820 /* Language.swift */; };
+		A1234567890123456823 /* TranscriptionState.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1234567890123456822 /* TranscriptionState.swift */; };
+		A1234567890123456825 /* DoctorReport.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1234567890123456824 /* DoctorReport.swift */; };
+		A1234567890123456827 /* TranscriptionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1234567890123456826 /* TranscriptionService.swift */; };
+		A1234567890123456829 /* AISummaryService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1234567890123456828 /* AISummaryService.swift */; };
+		A1234567890123456831 /* TranslationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1234567890123456830 /* TranslationService.swift */; };
+		A1234567890123456833 /* ReportBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1234567890123456832 /* ReportBuilder.swift */; };
+		A1234567890123456835 /* StorageProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1234567890123456834 /* StorageProtocol.swift */; };
+		A1234567890123456837 /* LocalStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1234567890123456836 /* LocalStore.swift */; };
+		A1234567890123456839 /* CloudStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1234567890123456838 /* CloudStore.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		A1234567890123456785 /* Symi.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Symi.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		A1234567890123456788 /* SymiApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SymiApp.swift; sourceTree = "<group>"; };
+		A1234567890123456790 /* DIContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DIContainer.swift; sourceTree = "<group>"; };
+		A1234567890123456792 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
+		A1234567890123456794 /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
+		A1234567890123456796 /* NewSymptomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewSymptomView.swift; sourceTree = "<group>"; };
+		A1234567890123456798 /* NewSymptomViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewSymptomViewModel.swift; sourceTree = "<group>"; };
+		A1234567890123456800 /* TranscriptionSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranscriptionSheetView.swift; sourceTree = "<group>"; };
+		A1234567890123456802 /* AttachmentPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttachmentPicker.swift; sourceTree = "<group>"; };
+		A1234567890123456804 /* HistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryView.swift; sourceTree = "<group>"; };
+		A1234567890123456806 /* HistoryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryViewModel.swift; sourceTree = "<group>"; };
+		A1234567890123456808 /* DoctorReportView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoctorReportView.swift; sourceTree = "<group>"; };
+		A1234567890123456810 /* DoctorReportViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoctorReportViewModel.swift; sourceTree = "<group>"; };
+		A1234567890123456812 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		A1234567890123456814 /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
+		A1234567890123456816 /* SymptomEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SymptomEntry.swift; sourceTree = "<group>"; };
+		A1234567890123456818 /* Attachment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Attachment.swift; sourceTree = "<group>"; };
+		A1234567890123456820 /* Language.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Language.swift; sourceTree = "<group>"; };
+		A1234567890123456822 /* TranscriptionState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranscriptionState.swift; sourceTree = "<group>"; };
+		A1234567890123456824 /* DoctorReport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoctorReport.swift; sourceTree = "<group>"; };
+		A1234567890123456826 /* TranscriptionService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranscriptionService.swift; sourceTree = "<group>"; };
+		A1234567890123456828 /* AISummaryService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AISummaryService.swift; sourceTree = "<group>"; };
+		A1234567890123456830 /* TranslationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslationService.swift; sourceTree = "<group>"; };
+		A1234567890123456832 /* ReportBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportBuilder.swift; sourceTree = "<group>"; };
+		A1234567890123456834 /* StorageProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageProtocol.swift; sourceTree = "<group>"; };
+		A1234567890123456836 /* LocalStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalStore.swift; sourceTree = "<group>"; };
+		A1234567890123456838 /* CloudStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudStore.swift; sourceTree = "<group>"; };
+		A1234567890123456850 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		A1234567890123456782 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		A1234567890123456776 = {
+			isa = PBXGroup;
+			children = (
+				A1234567890123456781 /* Symi */,
+				A1234567890123456786 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		A1234567890123456781 /* Symi */ = {
+			isa = PBXGroup;
+			children = (
+				A1234567890123456850 /* Info.plist */,
+				A1234567890123456787 /* App */,
+				A1234567890123456840 /* Core */,
+				A1234567890123456841 /* Features */,
+				A1234567890123456842 /* Resources */,
+			);
+			path = Symi;
+			sourceTree = "<group>";
+		};
+		A1234567890123456786 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				A1234567890123456785 /* Symi.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		A1234567890123456787 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				A1234567890123456788 /* SymiApp.swift */,
+				A1234567890123456790 /* DIContainer.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		A1234567890123456840 /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				A1234567890123456843 /* Models */,
+				A1234567890123456844 /* Services */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
+		A1234567890123456841 /* Features */ = {
+			isa = PBXGroup;
+			children = (
+				A1234567890123456845 /* Main */,
+				A1234567890123456846 /* NewSymptom */,
+				A1234567890123456847 /* History */,
+				A1234567890123456848 /* Report */,
+				A1234567890123456849 /* Settings */,
+			);
+			path = Features;
+			sourceTree = "<group>";
+		};
+		A1234567890123456842 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		A1234567890123456843 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				A1234567890123456816 /* SymptomEntry.swift */,
+				A1234567890123456818 /* Attachment.swift */,
+				A1234567890123456820 /* Language.swift */,
+				A1234567890123456822 /* TranscriptionState.swift */,
+				A1234567890123456824 /* DoctorReport.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		A1234567890123456844 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				A1234567890123456826 /* TranscriptionService.swift */,
+				A1234567890123456828 /* AISummaryService.swift */,
+				A1234567890123456830 /* TranslationService.swift */,
+				A1234567890123456832 /* ReportBuilder.swift */,
+				A1234567890123456851 /* Storage */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		A1234567890123456845 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				A1234567890123456792 /* MainView.swift */,
+				A1234567890123456794 /* MainViewModel.swift */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		A1234567890123456846 /* NewSymptom */ = {
+			isa = PBXGroup;
+			children = (
+				A1234567890123456796 /* NewSymptomView.swift */,
+				A1234567890123456798 /* NewSymptomViewModel.swift */,
+				A1234567890123456800 /* TranscriptionSheetView.swift */,
+				A1234567890123456802 /* AttachmentPicker.swift */,
+			);
+			path = NewSymptom;
+			sourceTree = "<group>";
+		};
+		A1234567890123456847 /* History */ = {
+			isa = PBXGroup;
+			children = (
+				A1234567890123456804 /* HistoryView.swift */,
+				A1234567890123456806 /* HistoryViewModel.swift */,
+			);
+			path = History;
+			sourceTree = "<group>";
+		};
+		A1234567890123456848 /* Report */ = {
+			isa = PBXGroup;
+			children = (
+				A1234567890123456808 /* DoctorReportView.swift */,
+				A1234567890123456810 /* DoctorReportViewModel.swift */,
+			);
+			path = Report;
+			sourceTree = "<group>";
+		};
+		A1234567890123456849 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				A1234567890123456812 /* SettingsView.swift */,
+				A1234567890123456814 /* SettingsViewModel.swift */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
+		A1234567890123456851 /* Storage */ = {
+			isa = PBXGroup;
+			children = (
+				A1234567890123456834 /* StorageProtocol.swift */,
+				A1234567890123456836 /* LocalStore.swift */,
+				A1234567890123456838 /* CloudStore.swift */,
+			);
+			path = Storage;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		A1234567890123456784 /* Symi */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A1234567890123456852 /* Build configuration list for PBXNativeTarget "Symi" */;
+			buildPhases = (
+				A1234567890123456781 /* Sources */,
+				A1234567890123456782 /* Frameworks */,
+				A1234567890123456783 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Symi;
+			productName = Symi;
+			productReference = A1234567890123456785 /* Symi.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		A1234567890123456777 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1500;
+				LastUpgradeCheck = 1500;
+				TargetAttributes = {
+					A1234567890123456784 = {
+						CreatedOnToolsVersion = 15.0;
+					};
+				};
+			};
+			buildConfigurationList = A1234567890123456780 /* Build configuration list for PBXProject "Symi" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = A1234567890123456776;
+			productRefGroup = A1234567890123456786 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				A1234567890123456784 /* Symi */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		A1234567890123456783 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		A1234567890123456781 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A1234567890123456789 /* SymiApp.swift in Sources */,
+				A1234567890123456791 /* DIContainer.swift in Sources */,
+				A1234567890123456793 /* MainView.swift in Sources */,
+				A1234567890123456795 /* MainViewModel.swift in Sources */,
+				A1234567890123456797 /* NewSymptomView.swift in Sources */,
+				A1234567890123456799 /* NewSymptomViewModel.swift in Sources */,
+				A1234567890123456801 /* TranscriptionSheetView.swift in Sources */,
+				A1234567890123456803 /* AttachmentPicker.swift in Sources */,
+				A1234567890123456805 /* HistoryView.swift in Sources */,
+				A1234567890123456807 /* HistoryViewModel.swift in Sources */,
+				A1234567890123456809 /* DoctorReportView.swift in Sources */,
+				A1234567890123456811 /* DoctorReportViewModel.swift in Sources */,
+				A1234567890123456813 /* SettingsView.swift in Sources */,
+				A1234567890123456815 /* SettingsViewModel.swift in Sources */,
+				A1234567890123456817 /* SymptomEntry.swift in Sources */,
+				A1234567890123456819 /* Attachment.swift in Sources */,
+				A1234567890123456821 /* Language.swift in Sources */,
+				A1234567890123456823 /* TranscriptionState.swift in Sources */,
+				A1234567890123456825 /* DoctorReport.swift in Sources */,
+				A1234567890123456827 /* TranscriptionService.swift in Sources */,
+				A1234567890123456829 /* AISummaryService.swift in Sources */,
+				A1234567890123456831 /* TranslationService.swift in Sources */,
+				A1234567890123456833 /* ReportBuilder.swift in Sources */,
+				A1234567890123456835 /* StorageProtocol.swift in Sources */,
+				A1234567890123456837 /* LocalStore.swift in Sources */,
+				A1234567890123456839 /* CloudStore.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		A1234567890123456853 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		A1234567890123456854 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		A1234567890123456855 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = "";
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Symi/Info.plist;
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "Symi needs microphone access to record your voice descriptions of symptoms.";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 2.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.symi.app;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		A1234567890123456856 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = "";
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Symi/Info.plist;
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "Symi needs microphone access to record your voice descriptions of symptoms.";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 2.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.symi.app;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		A1234567890123456780 /* Build configuration list for PBXProject "Symi" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A1234567890123456853 /* Debug */,
+				A1234567890123456854 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A1234567890123456852 /* Build configuration list for PBXNativeTarget "Symi" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A1234567890123456855 /* Debug */,
+				A1234567890123456856 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = A1234567890123456777 /* Project object */;
+}
