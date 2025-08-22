@@ -62,8 +62,19 @@ class NewSymptomViewModel: ObservableObject {
         do {
             try recordingSession?.setCategory(.playAndRecord, mode: .default)
             try recordingSession?.setActive(true)
+            
+            // Request microphone permission
+            recordingSession?.requestRecordPermission { [weak self] allowed in
+                DispatchQueue.main.async {
+                    if !allowed {
+                        self?.transcriptionState = .error(message: "Microphone access is required to record symptoms. Please enable it in Settings.")
+                    }
+                }
+            }
         } catch {
-            print("Failed to set up recording session: \(error)")
+            DispatchQueue.main.async {
+                self.transcriptionState = .error(message: "Failed to set up recording session: \(error.localizedDescription)")
+            }
         }
     }
     
@@ -72,18 +83,41 @@ class NewSymptomViewModel: ObservableObject {
     func startRecording() {
         guard transcriptionState.isRecording == false else { return }
         
+        // Check microphone permission first
+        switch AVAudioSession.sharedInstance().recordPermission {
+        case .denied:
+            transcriptionState = .error(message: "Microphone access denied. Please enable it in Settings → Privacy & Security → Microphone.")
+            return
+        case .undetermined:
+            AVAudioSession.sharedInstance().requestRecordPermission { [weak self] allowed in
+                DispatchQueue.main.async {
+                    if allowed {
+                        self?.startRecording()
+                    } else {
+                        self?.transcriptionState = .error(message: "Microphone permission is required to record symptoms.")
+                    }
+                }
+            }
+            return
+        case .granted:
+            break
+        @unknown default:
+            break
+        }
+        
         let documentsPath = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
-        recordingURL = documentsPath.appendingPathComponent("recording.m4a")
+        recordingURL = documentsPath.appendingPathComponent("recording_\(Date().timeIntervalSince1970).m4a")
         
         let settings = [
             AVFormatIDKey: Int(kAudioFormatMPEG4AAC),
-            AVSampleRateKey: 12000,
+            AVSampleRateKey: 44100,
             AVNumberOfChannelsKey: 1,
             AVEncoderAudioQualityKey: AVAudioQuality.high.rawValue
         ]
         
         do {
             audioRecorder = try AVAudioRecorder(url: recordingURL!, settings: settings)
+            audioRecorder?.delegate = self
             audioRecorder?.record()
             transcriptionState = .recording
         } catch {
@@ -276,6 +310,19 @@ class NewSymptomViewModel: ObservableObject {
     }
 }
 
-enum SymptomInputMode {
-    case voice, text
+// MARK: - AVAudioRecorderDelegate
+
+extension NewSymptomViewModel: AVAudioRecorderDelegate {
+    func audioRecorderDidFinishRecording(_ recorder: AVAudioRecorder, successfully flag: Bool) {
+        if !flag {
+            transcriptionState = .error(message: "Recording failed unexpectedly")
+        }
+    }
+    
+    func audioRecorderEncodeErrorDidOccur(_ recorder: AVAudioRecorder, error: Error?) {
+        if let error = error {
+            transcriptionState = .error(message: "Recording error: \(error.localizedDescription)")
+        }
+    }
 }
+

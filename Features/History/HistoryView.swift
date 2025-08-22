@@ -3,15 +3,40 @@ import SwiftUI
 struct HistoryView: View {
     @StateObject private var viewModel = DIContainer.shared.historyViewModel
     @State private var showingDoctorReport = false
+    @State private var showingFilterSheet = false
+    @State private var selectedFilter: FilterOption = .all
+    
+    enum FilterOption: String, CaseIterable {
+        case all = "All"
+        case voice = "Voice"
+        case text = "Text"
+        case today = "Today"
+        case thisWeek = "This Week"
+        
+        var systemImage: String {
+            switch self {
+            case .all: return "list.bullet"
+            case .voice: return "mic.fill"
+            case .text: return "pencil"
+            case .today: return "calendar"
+            case .thisWeek: return "calendar.badge.clock"
+            }
+        }
+    }
     
     var body: some View {
         NavigationView {
-            VStack {
+            VStack(spacing: 0) {
+                // Filter bar
+                if !viewModel.entries.isEmpty {
+                    filterBar
+                }
+                
                 if viewModel.isLoading {
                     Spacer()
                     ProgressView("Loading entries...")
                     Spacer()
-                } else if viewModel.entries.isEmpty {
+                } else if filteredEntries.isEmpty {
                     emptyStateView
                 } else {
                     entriesListView
@@ -20,11 +45,23 @@ struct HistoryView: View {
             .navigationTitle("History")
             .searchable(text: $viewModel.searchText, prompt: "Search symptoms...")
             .toolbar {
-                if !viewModel.entries.isEmpty {
-                    ToolbarItem(placement: .navigationBarTrailing) {
-                        Button("AI History") {
+                ToolbarItem(placement: .navigationBarLeading) {
+                    if !viewModel.entries.isEmpty {
+                        Button(action: {
+                            showingFilterSheet = true
+                        }) {
+                            Image(systemName: "line.3.horizontal.decrease.circle")
+                                .foregroundColor(.blue)
+                        }
+                    }
+                }
+                
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    if !viewModel.entries.isEmpty {
+                        Button("AI Report") {
                             showingDoctorReport = true
                         }
+                        .foregroundColor(.blue)
                     }
                 }
             }
@@ -41,6 +78,97 @@ struct HistoryView: View {
         }
         .onAppear {
             viewModel.loadEntries()
+        }
+        .sheet(isPresented: $showingFilterSheet) {
+            filterSheet
+        }
+    }
+    
+    private var filterBar: some View {
+        ScrollView(.horizontal, showsIndicators: false) {
+            HStack(spacing: 12) {
+                ForEach(FilterOption.allCases, id: \.self) { filter in
+                    Button(action: {
+                        selectedFilter = filter
+                    }) {
+                        HStack(spacing: 6) {
+                            Image(systemName: filter.systemImage)
+                                .font(.caption)
+                            Text(filter.rawValue)
+                                .font(.caption)
+                                .fontWeight(.medium)
+                        }
+                        .padding(.horizontal, 12)
+                        .padding(.vertical, 6)
+                        .background(
+                            RoundedRectangle(cornerRadius: 16)
+                                .fill(selectedFilter == filter ? Color.blue : Color.gray.opacity(0.2))
+                        )
+                        .foregroundColor(selectedFilter == filter ? .white : .primary)
+                    }
+                }
+            }
+            .padding(.horizontal)
+        }
+        .padding(.vertical, 8)
+    }
+    
+    private var filterSheet: some View {
+        NavigationView {
+            List {
+                Section("Filter Options") {
+                    ForEach(FilterOption.allCases, id: \.self) { filter in
+                        Button(action: {
+                            selectedFilter = filter
+                            showingFilterSheet = false
+                        }) {
+                            HStack {
+                                Image(systemName: filter.systemImage)
+                                    .foregroundColor(.blue)
+                                    .frame(width: 24)
+                                
+                                Text(filter.rawValue)
+                                    .foregroundColor(.primary)
+                                
+                                Spacer()
+                                
+                                if selectedFilter == filter {
+                                    Image(systemName: "checkmark")
+                                        .foregroundColor(.blue)
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            .navigationTitle("Filter Entries")
+            .navigationBarTitleDisplayMode(.inline)
+            .toolbar {
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    Button("Done") {
+                        showingFilterSheet = false
+                    }
+                }
+            }
+        }
+    }
+    
+    private var filteredEntries: [SymptomEntry] {
+        let searchFiltered = viewModel.filteredEntries
+        
+        switch selectedFilter {
+        case .all:
+            return searchFiltered
+        case .voice:
+            return searchFiltered.filter { $0.source == .voice }
+        case .text:
+            return searchFiltered.filter { $0.source == .text }
+        case .today:
+            let today = Calendar.current.startOfDay(for: Date())
+            return searchFiltered.filter { Calendar.current.isDate($0.createdAt, inSameDayAs: today) }
+        case .thisWeek:
+            let weekAgo = Calendar.current.date(byAdding: .day, value: -7, to: Date()) ?? Date()
+            return searchFiltered.filter { $0.createdAt >= weekAgo }
         }
     }
     
@@ -68,7 +196,7 @@ struct HistoryView: View {
     
     private var entriesListView: some View {
         List {
-            ForEach(viewModel.filteredEntries) { entry in
+            ForEach(filteredEntries) { entry in
                 SymptomEntryRow(entry: entry)
                     .swipeActions(edge: .trailing, allowsFullSwipe: true) {
                         Button("Delete", role: .destructive) {

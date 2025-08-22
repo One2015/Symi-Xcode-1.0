@@ -119,15 +119,37 @@ struct NewSymptomView: View {
                 .font(.headline)
                 .foregroundColor(.primary)
             
-            TextEditor(text: $viewModel.textInput)
-                .frame(minHeight: 150)
-                .padding(8)
-                .background(Color.gray.opacity(0.1))
-                .cornerRadius(8)
-                .overlay(
-                    RoundedRectangle(cornerRadius: 8)
-                        .stroke(Color.gray.opacity(0.3), lineWidth: 1)
-                )
+            ZStack(alignment: .topLeading) {
+                TextEditor(text: $viewModel.textInput)
+                    .frame(minHeight: 150)
+                    .padding(12)
+                    .background(Color.clear)
+                    .scrollContentBackground(.hidden)
+                
+                if viewModel.textInput.isEmpty {
+                    Text("Describe what you're feeling, when it started, severity, etc...")
+                        .foregroundColor(.secondary.opacity(0.7))
+                        .padding(.horizontal, 16)
+                        .padding(.vertical, 20)
+                        .allowsHitTesting(false)
+                }
+            }
+            .background(
+                RoundedRectangle(cornerRadius: 12)
+                    .fill(Color(.systemGray6))
+                    .overlay(
+                        RoundedRectangle(cornerRadius: 12)
+                            .stroke(viewModel.textInput.isEmpty ? Color.gray.opacity(0.3) : Color.blue.opacity(0.5), lineWidth: 1.5)
+                    )
+            )
+            
+            // Character count
+            HStack {
+                Spacer()
+                Text("\(viewModel.textInput.count) characters")
+                    .font(.caption)
+                    .foregroundColor(.secondary)
+            }
         }
     }
     
@@ -156,28 +178,40 @@ struct NewSymptomView: View {
                         Button(action: {
                             if viewModel.selectedLanguage != language {
                                 viewModel.selectedLanguage = language
-                                viewModel.translateContent()
+                                if !viewModel.textInput.isEmpty {
+                                    viewModel.translateContent()
+                                }
                             }
                         }) {
                             HStack {
                                 Text("\(language.flag) \(language.displayName)")
+                                    .font(.body)
+                                Spacer()
                                 if viewModel.selectedLanguage == language {
-                                    Spacer()
-                                    Image(systemName: "checkmark")
+                                    Image(systemName: "checkmark.circle.fill")
+                                        .foregroundColor(.blue)
                                 }
                             }
+                            .contentShape(Rectangle())
                         }
                     }
                 } label: {
-                    Image(systemName: "globe")
-                        .font(.title2)
-                        .foregroundColor(.blue)
-                        .overlay(
-                            Text(viewModel.selectedLanguage.flag)
-                                .font(.caption2)
-                                .offset(x: 8, y: 8)
-                        )
+                    VStack(spacing: 4) {
+                        ZStack {
+                            Circle()
+                                .fill(Color.blue.opacity(0.1))
+                                .frame(width: 40, height: 40)
+                            
+                            Image(systemName: "globe")
+                                .font(.title3)
+                                .foregroundColor(.blue)
+                        }
+                        
+                        Text(viewModel.selectedLanguage.flag)
+                            .font(.caption)
+                    }
                 }
+                .disabled(viewModel.isTranslating)
             }
             
             // Attachments
@@ -262,33 +296,59 @@ struct NewSymptomView: View {
 struct AttachmentChip: View {
     let attachment: Attachment
     let onRemove: () -> Void
+    @State private var isLoading = false
     
     var body: some View {
         VStack(spacing: 4) {
             ZStack(alignment: .topTrailing) {
                 RoundedRectangle(cornerRadius: 8)
-                    .fill(Color.gray.opacity(0.2))
+                    .fill(attachment.isImage ? Color.blue.opacity(0.1) : Color.orange.opacity(0.1))
                     .frame(height: 60)
                     .overlay(
-                        Image(systemName: attachment.isImage ? "photo" : "doc.text")
-                            .font(.title2)
-                            .foregroundColor(.gray)
+                        VStack {
+                            Image(systemName: attachment.isImage ? "photo.fill" : "doc.text.fill")
+                                .font(.title2)
+                                .foregroundColor(attachment.isImage ? .blue : .orange)
+                            
+                            if attachment.isImage {
+                                Text("IMG")
+                                    .font(.caption2)
+                                    .foregroundColor(.blue)
+                            } else {
+                                Text(attachment.fileExtension.uppercased())
+                                    .font(.caption2)
+                                    .foregroundColor(.orange)
+                            }
+                        }
+                    )
+                    .overlay(
+                        RoundedRectangle(cornerRadius: 8)
+                            .stroke(attachment.isImage ? Color.blue.opacity(0.3) : Color.orange.opacity(0.3), lineWidth: 1)
                     )
                 
                 Button(action: onRemove) {
                     Image(systemName: "xmark.circle.fill")
-                        .font(.caption)
+                        .font(.system(size: 16))
                         .foregroundColor(.red)
                         .background(Color.white)
                         .clipShape(Circle())
                 }
-                .offset(x: 4, y: -4)
+                .offset(x: 6, y: -6)
             }
             
             Text(attachment.filename)
                 .font(.caption2)
                 .lineLimit(1)
                 .truncationMode(.middle)
+                .foregroundColor(.primary)
+        }
+        .scaleEffect(isLoading ? 0.95 : 1.0)
+        .animation(.easeInOut(duration: 0.1), value: isLoading)
+        .onTapGesture {
+            isLoading = true
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+                isLoading = false
+            }
         }
     }
 }

@@ -34,10 +34,6 @@ struct HomeView: View {
     @State private var showingNewSymptom = false
     @State private var symptomInputMode: SymptomInputMode = .voice
     
-    enum SymptomInputMode {
-        case voice, text
-    }
-    
     var body: some View {
         NavigationView {
             VStack(spacing: 40) {
@@ -46,12 +42,11 @@ struct HomeView: View {
                 // App Title and Description
                 VStack(spacing: 16) {
                     Text("Symi")
-                        .font(.largeTitle)
-                        .fontWeight(.bold)
+                        .font(.system(size: 48, weight: .bold, design: .rounded))
                         .foregroundColor(.primary)
                     
                     Text("Track your symptoms with voice or text")
-                        .font(.body)
+                        .font(.title3)
                         .foregroundColor(.secondary)
                         .multilineTextAlignment(.center)
                         .padding(.horizontal)
@@ -80,6 +75,7 @@ struct HomeView: View {
                         .background(
                             RoundedRectangle(cornerRadius: 16)
                                 .fill(Color.blue)
+                                .shadow(color: .blue.opacity(0.3), radius: 8, x: 0, y: 4)
                         )
                     }
                     .padding(.horizontal, 32)
@@ -103,6 +99,10 @@ struct HomeView: View {
                         .background(
                             RoundedRectangle(cornerRadius: 16)
                                 .strokeBorder(Color.blue, lineWidth: 2)
+                                .background(
+                                    RoundedRectangle(cornerRadius: 16)
+                                        .fill(Color.blue.opacity(0.05))
+                                )
                         )
                     }
                     .padding(.horizontal, 32)

@@ -101,7 +101,9 @@ struct AttachmentPicker: View {
             switch result {
             case .success(let data):
                 if let data = data {
-                    let filename = "image_\(Date().timeIntervalSince1970).jpg"
+                    // Determine file extension based on data type
+                    let fileExtension = self.determineImageFileExtension(from: data)
+                    let filename = "image_\(Date().timeIntervalSince1970).\(fileExtension)"
                     DispatchQueue.main.async {
                         onAttachmentSelected(data, filename)
                         dismiss()
@@ -109,7 +111,25 @@ struct AttachmentPicker: View {
                 }
             case .failure(let error):
                 print("Failed to load photo: \(error)")
+                DispatchQueue.main.async {
+                    dismiss()
+                }
             }
+        }
+    }
+    
+    private func determineImageFileExtension(from data: Data) -> String {
+        // Check the first few bytes to determine image type
+        guard data.count > 4 else { return "jpg" }
+        
+        if data.starts(with: [0xFF, 0xD8, 0xFF]) {
+            return "jpg"
+        } else if data.starts(with: [0x89, 0x50, 0x4E, 0x47]) {
+            return "png"
+        } else if data.starts(with: [0x66, 0x74, 0x79, 0x70]) {
+            return "heic"
+        } else {
+            return "jpg" // Default fallback
         }
     }
     
